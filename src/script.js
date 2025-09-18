@@ -67,6 +67,21 @@ gui.add(waterMaterial.uniforms.uSmallIterations, 'value').min(0).max(5).step(1).
 gui.add(waterMaterial.uniforms.uColorOffset, 'value').min(0).max(1).step(0.001).name('uColorOffset')
 gui.add(waterMaterial.uniforms.uColorMultiplier, 'value').min(0).max(10).step(0.001).name('uColorMultiplier')
 
+// resize gui width
+function resizeGUI() {
+    if (window.innerWidth <= 414) {
+        gui.domElement.style.transform = 'scale(0.)';
+        gui.domElement.style.transformOrigin = 'top right';
+    } else {
+        gui.domElement.style.transform = 'scale(1)';
+        gui.domElement.style.transformOrigin = 'top right';
+    }
+}
+
+resizeGUI();
+window.addEventListener('resize', resizeGUI);
+
+
 // Mesh
 const water = new THREE.Mesh(waterGeometry, waterMaterial)
 water.rotation.x = - Math.PI * 0.5
